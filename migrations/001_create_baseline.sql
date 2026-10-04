@@ -3,11 +3,13 @@ CREATE TABLE IF NOT EXISTS users (
     id         SERIAL       PRIMARY KEY,
     username   VARCHAR(50)  NOT NULL UNIQUE,
     email      VARCHAR(100) NOT NULL UNIQUE,
+    is_active  BOOLEAN      NOT NULL DEFAULT TRUE,
     created_at TIMESTAMPTZ  NOT NULL DEFAULT NOW()
 );
 
 CREATE INDEX IF NOT EXISTS idx_users_username_lower ON users (LOWER(username));
 CREATE INDEX IF NOT EXISTS idx_users_email_lower ON users (LOWER(email));
+CREATE INDEX IF NOT EXISTS idx_users_is_active ON users (is_active);
 
 -- 2. Games catalog
 CREATE TABLE IF NOT EXISTS games (
