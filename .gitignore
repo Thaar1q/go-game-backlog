@@ -33,7 +33,6 @@ logs/
 *.log
 
 # Miscellaneous
-_Modules
 _Test
 
 # Editor/IDE
