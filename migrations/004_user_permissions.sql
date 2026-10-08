@@ -3,7 +3,10 @@ INSERT INTO permissions (name, description) VALUES
     ('game:create',  'Add new game to catalog'),
     ('game:update',  'Edit existing catalog game'),
     ('game:delete',  'Delete catalog game'),
-    ('role:assign',  'Assign roles to users')
+    ('role:assign',  'Assign roles to users'),
+    ('backlog:read:any',   'View any user backlog'),
+    ('backlog:update:any', 'Update any user backlog'),
+    ('backlog:delete:any', 'Delete any user backlog')
 ON CONFLICT (name) DO NOTHING;
 
 -- Admin: all permissions
@@ -12,7 +15,10 @@ INSERT INTO role_permissions (role_name, permission_name) VALUES
     ('admin', 'game:create'),
     ('admin', 'game:update'),
     ('admin', 'game:delete'),
-    ('admin', 'role:assign')
+    ('admin', 'role:assign'),
+    ('admin', 'backlog:read:any'),
+    ('admin', 'backlog:update:any'),
+    ('admin', 'backlog:delete:any')
 ON CONFLICT DO NOTHING;
 
 -- Curator: catalog management
