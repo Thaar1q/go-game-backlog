@@ -37,8 +37,8 @@ func (h *GameService) ListGames(c *fiber.Ctx) error {
 		return err
 	}
 
-	// Cursor pagination
-	if c.Query("cursor") != "" {
+	// Cursor pagination (default jika cursor diisi atau parameter page tidak ditentukan)
+	if c.Query("cursor") != "" || (c.Query("page") == "" && c.Query("sort") == "") {
 		q, err := helper.ParseCursorQuery(c)
 		if err != nil {
 			return helper.BadRequest("invalid cursor")
