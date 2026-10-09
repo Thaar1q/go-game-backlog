@@ -26,11 +26,13 @@ RESTful API service for video game catalog management and personal game backlog 
 2. Create the target database (e.g., go_game_backlog):
    CREATE DATABASE go_game_backlog;
 3. Execute the migration scripts:
+   ```
    psql -U postgres -d go_game_backlog -f migrations/001_create_baseline.sql
    psql -U postgres -d go_game_backlog -f migrations/002_auth.sql
    psql -U postgres -d go_game_backlog -f migrations/003_rbac.sql
    psql -U postgres -d go_game_backlog -f migrations/004_user_permissions.sql
    psql -U postgres -d go_game_backlog -f migrations/005_cursor_index.sql
+   ```
 
 ##### Database Schema
 ```sql
@@ -195,7 +197,18 @@ Base URL: http://localhost:3000/api/v1
   "request_id": "f27f6aee-691c-40b4-92f5-f8e8417bdd87"
 }
 ```
-Machine-readable codes: `VALIDATION_ERROR` (422), `BAD_REQUEST` (400), `UNAUTHORIZED` (401), `FORBIDDEN` (403), `NOT_FOUND` (404), `CONFLICT` (409), `UNSUPPORTED_MEDIA_TYPE` (415), `NOT_ACCEPTABLE` (406), `TOO_MANY_REQUESTS` (429), `SERVICE_UNAVAILABLE` (503), `INTERNAL_ERROR` (500).
+Machine-readable codes
+- (400) `BAD_REQUEST`
+- (401) `UNAUTHORIZED`
+- (403) `FORBIDDEN`
+- (404) `NOT_FOUND`
+- (406) `NOT_ACCEPTABLE`
+- (409) `CONFLICT`
+- (415) `UNSUPPORTED_MEDIA_TYPE`
+- (422) `VALIDATION_ERROR`
+- (429) `TOO_MANY_REQUESTS`
+- (500) `INTERNAL_ERROR`
+- (503) `SERVICE_UNAVAILABLE`
 
 ---
 
